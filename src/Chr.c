@@ -51,7 +51,7 @@ void ChrLoadPalette(const char *paletteBuffer)
                 for (pixelX = 0; pixelX < 8; pixelX++){
                     for (pixelY = 0; pixelY < 8; pixelY++){
                         pixelColor = (emulatePPU.chrAdddress.sprite[spriteId].color1[pixelY] >> (7 - pixelX)) & 1;
-                        pixelColor|= (emulatePPU.chrAdddress.sprite[spriteId].color2[pixelY] >> (8 - pixelX)) & 2; 
+                        pixelColor|= ((emulatePPU.chrAdddress.sprite[spriteId].color2[pixelY] >> (7 - pixelX)) & 1) << 1;
                         trueColor = lockupColors[paletteBuffer[(paletteId*4)+(pixelColor%4)]];
                         ImageDrawPixel(&generatedImg, pixelX, pixelY, trueColor); 
                     }
