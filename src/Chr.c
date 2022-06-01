@@ -27,9 +27,6 @@ void ChrLoadFile(const char *fileName)
 {
     int file = open(fileName, O_RDONLY);
     read(file, emulatePPU.chrAdddress.raw, sizeof(emulatePPU.chrAdddress.raw));
-    for(int i; i < sizeof(emulatePPU.chrAdddress.raw); i++) {
-        printf("%02x", emulatePPU.chrAdddress.raw[i]);
-    }
     close(file);
 }
 
